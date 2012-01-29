@@ -1,0 +1,10 @@
+INSERT INTO person(firstName, pin, registrationDate) VALUES ('Bolek', '1234', '2012-01-10')
+INSERT INTO person(firstName, pin, registrationDate) VALUES ('Lolek', '1235', '2012-01-10')
+INSERT INTO person(firstName, pin, registrationDate) VALUES ('Tola', '1236', '2012-01-10')
+
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Fiat', 'Bravo', 2.32, 23, false)
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Ford', 'Mondeo', 3.31, 32, false)
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Ford', 'Focus', 4.31, 12, false)
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Opel', 'Vectra', 4.32, 14, false)
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Opel', 'Astra', 4.31, 87, false)
+INSERT INTO item(name, description, price, quantity, sold) VALUES ('Renault', 'Megane', 3.31, 4, false)
