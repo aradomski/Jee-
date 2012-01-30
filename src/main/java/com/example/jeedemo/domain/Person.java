@@ -85,8 +85,8 @@ public class Person {
 		this.items = items;
 	}
 
-	 @OneToMany(fetch = FetchType.LAZY , mappedBy = "pk.person")
-	//@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.person")
+	// @OneToMany(fetch = FetchType.LAZY)
 	public Set<PersonItem> getPersonItems() {
 		return personItems;
 	}
@@ -95,4 +95,7 @@ public class Person {
 		this.personItems = personItems;
 	}
 
+	public String toString() {
+		return "firstName = " +  firstName + "  pin = " + pin + " id = " + id + " registrationDate = " + registrationDate;
+	}
 }

@@ -73,4 +73,7 @@ public class PersonItem {
 		return (getPk() != null ? getPk().hashCode() : 0);
 	}
 
+	public String toString() {
+		return "quantity = " + quantity + pk.toString();
+	}
 }

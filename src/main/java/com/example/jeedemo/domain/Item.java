@@ -30,7 +30,7 @@ public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name= "item_id")
+	@Column(name = "item_id")
 	public Long getId() {
 		return id;
 	}
@@ -79,8 +79,8 @@ public class Item {
 		this.sold = sold;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "pk.item")
-	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pk.item")
+	// @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
 	public Set<PersonItem> getStockCategories() {
 		return stockCategories;
 	}
@@ -89,4 +89,8 @@ public class Item {
 		this.stockCategories = stockCategories;
 	}
 
+	public String toString() {
+		return "name = "+ name + " description = " + description + " price = " + price + " quantity = " + quantity + " sold = "
+				+ sold;
+	}
 }

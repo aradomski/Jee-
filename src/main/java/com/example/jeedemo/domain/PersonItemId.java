@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class PersonItemId implements Serializable{
+public class PersonItemId implements Serializable {
 
 	/**
 	 * 
@@ -56,4 +56,8 @@ public class PersonItemId implements Serializable{
 		return result;
 	}
 
+	public String toString() {
+		return "person = " + person.toString() + "\n" + " item ="
+				+ item.toString();
+	}
 }
