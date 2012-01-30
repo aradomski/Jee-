@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQuery(name = "item.unsold", query = "Select c from Item c where c.sold = false")
-@Table(name = "ITEM")
+@Table(name = "item")
 public class Item {
 
 	private Long id;
@@ -30,7 +30,7 @@ public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name= "ITEM_ID")
+	@Column(name= "item_id")
 	public Long getId() {
 		return id;
 	}
@@ -79,7 +79,8 @@ public class Item {
 		this.sold = sold;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "pk.ITEM")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "pk.item")
+	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
 	public Set<PersonItem> getStockCategories() {
 		return stockCategories;
 	}

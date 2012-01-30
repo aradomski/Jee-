@@ -11,8 +11,9 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "PERSON_ITEM")
 @AssociationOverrides({
-		@AssociationOverride(name = "pk.PERSON", joinColumns = @JoinColumn(name = "PERSON_ID")),
-		@AssociationOverride(name = "pk.ITEM", joinColumns = @JoinColumn(name = "ITEM_ID")) })
+		@AssociationOverride(name = "pk.person", joinColumns = @JoinColumn(name = "person_id")),
+		@AssociationOverride(name = "pk.item", joinColumns = @JoinColumn(name = "item_id")) })
+// referencedColumnName = "COMPANY_ID", insertable = false, updatable = false
 public class PersonItem {
 
 	private PersonItemId pk = new PersonItemId();

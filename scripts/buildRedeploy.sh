@@ -1,5 +1,5 @@
 #!/bin/sh
-
+mvn clean
 echo "************ UNDEPLOYING *******************"
 asadmin undeploy jeedemo
 echo "************ BUILDING **********************"

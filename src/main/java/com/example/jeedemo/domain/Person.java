@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "person.all", query = "Select p from Person p") })
-@Table(name = "PERSON")
+@Table(name = "person")
 public class Person {
 
 	private Long id;
@@ -38,7 +38,7 @@ public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name= "PERSON_ID")
+	@Column(name = "person_id")
 	public Long getId() {
 		return id;
 	}
@@ -85,7 +85,8 @@ public class Person {
 		this.items = items;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY , mappedBy = "pk.PERSON")
+	 @OneToMany(fetch = FetchType.LAZY , mappedBy = "pk.person")
+	//@OneToMany(fetch = FetchType.LAZY)
 	public Set<PersonItem> getPersonItems() {
 		return personItems;
 	}

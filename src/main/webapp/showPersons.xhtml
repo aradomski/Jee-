@@ -7,16 +7,16 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:dataTable value="#{personBean.allPersons}" var="item">
+			<h:dataTable value="#{personBean.allPersons}" var="bla">
 				<f:facet name="header">#{msg.personAllLabel}</f:facet>
 				<h:column>
 					<f:facet name="header">#{msg.personFirstNameLabel}</f:facet>
-					<h:outputText value="#{item.firstName}" />
+					<h:outputText value="#{bla.firstName}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">#{msg.personPinLabel}</f:facet>
-					<h:outputText value="#{item.pin}" />
+					<h:outputText value="#{bla.pin}" />
 				</h:column>
 
 				<h:column>
