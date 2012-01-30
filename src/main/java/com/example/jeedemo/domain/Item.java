@@ -1,13 +1,22 @@
 package com.example.jeedemo.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @NamedQuery(name = "item.unsold", query = "Select c from Item c where c.sold = false")
+@Table(name = "ITEM")
 public class Item {
 
 	private Long id;
@@ -17,8 +26,11 @@ public class Item {
 	private int quantity;
 	private Boolean sold = false;
 
+	private Set<PersonItem> stockCategories = new HashSet<PersonItem>(0);
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name= "ITEM_ID")
 	public Long getId() {
 		return id;
 	}
@@ -66,4 +78,14 @@ public class Item {
 	public void setSold(Boolean sold) {
 		this.sold = sold;
 	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "pk.ITEM")
+	public Set<PersonItem> getStockCategories() {
+		return stockCategories;
+	}
+
+	public void setStockCategories(Set<PersonItem> stockCategories) {
+		this.stockCategories = stockCategories;
+	}
+
 }
