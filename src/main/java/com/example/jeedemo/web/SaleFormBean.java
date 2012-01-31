@@ -2,6 +2,7 @@ package com.example.jeedemo.web;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ import com.example.jeedemo.service.SellingManager;
 public class SaleFormBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	Logger logger = new Logging().getLogger();
 	@Inject
 	private SellingManager sm;
 
@@ -61,7 +62,8 @@ public class SaleFormBean implements Serializable {
 	}
 
 	public String sellItem() {
+		//logger.info(personId.toString() + " " + itemId + " " + quantity);
 		sm.sellItem(personId, itemId, quantity);
-		return "item sold";
+		return null;
 	}
 }

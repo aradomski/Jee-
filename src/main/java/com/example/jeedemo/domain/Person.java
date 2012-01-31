@@ -2,9 +2,7 @@ package com.example.jeedemo.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,8 +31,9 @@ public class Person {
 	private Date registrationDate = new Date();
 
 	private List<Item> items = new ArrayList<Item>();
+	private List<PersonItem> personItem = new ArrayList<PersonItem>();
 
-	private Set<PersonItem> personItems = new HashSet<PersonItem>(0);
+	// private Set<PersonItem> personItems = new HashSet<PersonItem>(0);
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,26 +75,40 @@ public class Person {
 
 	// Be careful here, both with lazy and eager fetch type
 	// @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	// @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pk.person")
 	public List<Item> getItems() {
 		return items;
 	}
 
 	public void setItems(List<Item> items) {
 		this.items = items;
+	}*/
+
+	// @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.person")
+	// // @OneToMany(fetch = FetchType.LAZY)
+	// public Set<PersonItem> getPersonItems() {
+	// return personItems;
+	// }
+	//
+	// public void setPersonItems(Set<PersonItem> personItems) {
+	// this.personItems = personItems;
+	// }
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pk.person")
+	public List<PersonItem> getPersonItem() {
+		return personItem;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.person")
-	// @OneToMany(fetch = FetchType.LAZY)
-	public Set<PersonItem> getPersonItems() {
-		return personItems;
+	public void setPersonItem(List<PersonItem> personItem) {
+		this.personItem = personItem;
 	}
-
-	public void setPersonItems(Set<PersonItem> personItems) {
-		this.personItems = personItems;
-	}
-
+	
+	
 	public String toString() {
-		return "firstName = " +  firstName + "  pin = " + pin + " id = " + id + " registrationDate = " + registrationDate;
+		return "firstName = " + firstName + "  pin = " + pin + " id = " + id
+				+ " registrationDate = " + registrationDate;
 	}
+
+	
 }

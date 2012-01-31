@@ -1,6 +1,7 @@
 package com.example.jeedemo.service;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import com.example.jeedemo.domain.Item;
 import com.example.jeedemo.domain.Person;
+import com.example.jeedemo.web.Logging;
 
 /* 
  * This is a Stateless EJB Bean
@@ -18,17 +20,20 @@ public class SellingManager {
 
 	@PersistenceContext
 	EntityManager em;
+	Logger logger = new Logging().getLogger();
 
 	public void sellItem(Long personId, Long itemId, int quantity) {
-
+		logger.info(personId.toString() + " " + itemId + " " + quantity);
 		Person person = em.find(Person.class, personId);
+		logger.info(person.toString());
 		Item item = em.find(Item.class, itemId);
+		logger.info(item.toString());
 		if (item.getQuantity() > quantity) {
 			item.setQuantity(item.getQuantity() - quantity);
 		} else {
 			item.setSold(true);
 		}
-		person.getItems().add(item);
+		//person.getItems().add(item);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -36,7 +41,7 @@ public class SellingManager {
 		return em.createNamedQuery("item.unsold").getResultList();
 	}
 
-	public void disposeItem(Person person, Item item) {
+	/*public void disposeItem(Person person, Item item) {
 
 		person = em.find(Person.class, person.getId());
 		item = em.find(Item.class, item.getId());
@@ -53,5 +58,5 @@ public class SellingManager {
 			person.getItems().remove(toRemove);
 
 		item.setSold(false);
-	}
+	}*/
 }

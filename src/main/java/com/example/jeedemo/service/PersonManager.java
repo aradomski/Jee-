@@ -37,11 +37,12 @@ public class PersonManager {
 	public List<Item> getOwnedItems(Person person) {
 		person = em.find(Person.class, person.getId());
 		// lazy loading here - try this code without this (shallow) copying
-		List<Item> items = new ArrayList<Item>(person.getItems());
-		for (Item item : items) {
-			logger.info(item.toString());
-		}
-		return items;
+		//List<Item> items = new ArrayList<Item>(person.getItems());
+//		for (Item item : items) {
+//			logger.info(item.toString());
+//		}
+//		return items;
+		return null;
 	}
 
 }

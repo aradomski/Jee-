@@ -1,7 +1,7 @@
 package com.example.jeedemo.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +26,7 @@ public class Item {
 	private int quantity;
 	private Boolean sold = false;
 
-	private Set<PersonItem> stockCategories = new HashSet<PersonItem>(0);
+	private List<PersonItem> personItems = new ArrayList<PersonItem>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -81,16 +81,17 @@ public class Item {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pk.item")
 	// @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
-	public Set<PersonItem> getStockCategories() {
-		return stockCategories;
+	public List<PersonItem> getPersonItems() {
+		return personItems;
 	}
 
-	public void setStockCategories(Set<PersonItem> stockCategories) {
-		this.stockCategories = stockCategories;
+	public void setPersonItems(List<PersonItem> personItems) {
+		this.personItems = personItems;
 	}
 
 	public String toString() {
-		return "name = "+ name + " description = " + description + " price = " + price + " quantity = " + quantity + " sold = "
-				+ sold;
+		return "name = " + name + " description = " + description + " price = "
+				+ price + " quantity = " + quantity + " sold = " + sold;
 	}
+
 }
